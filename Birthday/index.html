@@ -11,179 +11,170 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle at top, #1a0033, #000000 70%);
-            font-family: 'Dancing Script', cursive;
-            overflow: hidden;
-            color: white;
-        }
+        body{
+margin:0;
+padding:0;
+background: radial-gradient(circle at top,#1a0033,#000000 70%);
+font-family:'Dancing Script',cursive;
+overflow-x:hidden;
+color:white;
+}
 
-        /* BACKGROUND CANVAS */
+/* CANVAS */
 
-        #bgCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
+#bgCanvas,#fireCanvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+}
 
-        #fireCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
+#bgCanvas{z-index:-1;}
+#fireCanvas{pointer-events:none;z-index:1;}
 
-        /* CENTER CARD */
+/* CENTER CONTAINER */
 
-        .cont {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            position: relative;
-            z-index: 5;
-        }
+.cont{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+position:relative;
+z-index:5;
+}
 
-        .card {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            width: 60%;
-            border-radius: 25px;
-            text-align: center;
-            padding: 30px;
-            backdrop-filter: blur(10px);
+/* CARD */
 
-            box-shadow:
-                0 0 20px rgba(255, 255, 255, 0.2),
-                0 0 50px rgba(255, 0, 150, 0.3);
+.card{
+background:rgba(0,0,0,0.6);
+border:1px solid rgba(255,255,255,0.15);
 
-            animation: pop 1s ease;
-        }
+width:90%;
+max-width:700px;
 
-        @keyframes pop {
-            0% {
-                transform: scale(.2);
-                opacity: 0
-            }
+border-radius:25px;
+text-align:center;
+padding:30px 20px;
 
-            100% {
-                transform: scale(1);
-                opacity: 1
-            }
-        }
+backdrop-filter:blur(10px);
 
-        .card img {
-            width: 90%;
-            height: 350px;
-            border-radius: 20px;
-            margin-top: -80px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .8);
-            cursor: pointer;
-        }
+box-shadow:
+0 0 20px rgba(255,255,255,0.2),
+0 0 50px rgba(255,0,150,0.3);
 
-        /* IMAGE SHAKE */
+animation:pop 1s ease;
+}
 
-        .card img:hover {
-            animation: shake 0.5s infinite;
-        }
+@keyframes pop{
+0%{transform:scale(.2);opacity:0}
+100%{transform:scale(1);opacity:1}
+}
 
-        @keyframes shake {
+/* IMAGE */
 
-            0% {
-                transform: translate(1px, 1px) rotate(0deg);
-            }
+.card img{
+width:100%;
+max-height:350px;
+object-fit:cover;
+border-radius:20px;
+margin-top:-70px;
 
-            10% {
-                transform: translate(-1px, -2px) rotate(-1deg);
-            }
+box-shadow:0 10px 30px rgba(0,0,0,.8);
+cursor:pointer;
+transition:0.3s;
+}
 
-            20% {
-                transform: translate(-3px, 0px) rotate(1deg);
-            }
+/* IMAGE SHAKE */
 
-            30% {
-                transform: translate(3px, 2px) rotate(0deg);
-            }
+.card img:hover{
+animation:shake 0.5s infinite;
+}
 
-            40% {
-                transform: translate(1px, -1px) rotate(1deg);
-            }
+@keyframes shake{
+0%{transform:translate(1px,1px) rotate(0deg)}
+10%{transform:translate(-1px,-2px) rotate(-1deg)}
+20%{transform:translate(-3px,0px) rotate(1deg)}
+30%{transform:translate(3px,2px) rotate(0deg)}
+40%{transform:translate(1px,-1px) rotate(1deg)}
+50%{transform:translate(-1px,2px) rotate(-1deg)}
+60%{transform:translate(-3px,1px) rotate(0deg)}
+70%{transform:translate(3px,1px) rotate(-1deg)}
+80%{transform:translate(-1px,-1px) rotate(1deg)}
+90%{transform:translate(1px,2px) rotate(0deg)}
+100%{transform:translate(1px,-2px) rotate(0deg)}
+}
 
-            50% {
-                transform: translate(-1px, 2px) rotate(-1deg);
-            }
+/* TEXT */
 
-            60% {
-                transform: translate(-3px, 1px) rotate(0deg);
-            }
+h1{
+font-size:clamp(28px,5vw,48px);
+}
 
-            70% {
-                transform: translate(3px, 1px) rotate(-1deg);
-            }
+h2{
+font-size:clamp(20px,4vw,30px);
+}
 
-            80% {
-                transform: translate(-1px, -1px) rotate(1deg);
-            }
+h3{
+font-size:clamp(16px,3vw,22px);
+}
 
-            90% {
-                transform: translate(1px, 2px) rotate(0deg);
-            }
+.ml15{
+font-size:clamp(36px,6vw,55px);
+letter-spacing:4px;
 
-            100% {
-                transform: translate(1px, -2px) rotate(0deg);
-            }
+color:#ffcc00;
 
-        }
+text-shadow:
+0 0 10px #ffcc00,
+0 0 20px #ff9900,
+0 0 40px #ff6600;
+}
 
-        .ml15 {
-            font-size: 50px;
-            letter-spacing: 6px;
-            color: #ffcc00;
+/* MESSAGE */
 
-            text-shadow:
-                0 0 10px #ffcc00,
-                0 0 20px #ff9900,
-                0 0 40px #ff6600;
-        }
+.message{
+margin-top:20px;
+font-size:clamp(16px,3vw,22px);
+line-height:1.6;
+color:#ddd;
+}
 
-        .message {
-            margin-top: 20px;
-            font-size: 22px;
-            line-height: 1.6;
-            color: #ddd;
-        }
+/* SURPRISE */
 
-        /* SURPRISE MESSAGE */
+.surprise{
+display:none;
+margin-top:25px;
+font-size:clamp(18px,3vw,26px);
+color:#ffcc00;
 
-        .surprise {
-            display: none;
-            margin-top: 25px;
-            font-size: 26px;
-            color: #ffcc00;
+text-shadow:
+0 0 10px #ffcc00,
+0 0 20px #ff9900,
+0 0 40px #ff6600;
 
-            text-shadow:
-                0 0 10px #ffcc00,
-                0 0 20px #ff9900,
-                0 0 40px #ff6600;
+animation:fadeIn 1.5s ease;
+}
 
-            animation: fadeIn 1.5s ease;
-        }
+@keyframes fadeIn{
+0%{opacity:0;transform:scale(.5)}
+100%{opacity:1;transform:scale(1)}
+}
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: scale(.5);
-            }
+/* MOBILE FIX */
 
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
+@media(max-width:500px){
+
+.card{
+padding:25px 15px;
+}
+
+.card img{
+margin-top:-50px;
+}
+
+}
     </style>
 </head>
 
